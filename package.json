@@ -9,7 +9,6 @@
     "format": "ultracite format",
     "lint": "ultracite lint",
     "openapi:types": "openapi-typescript https://finance-management-api-c8hw.onrender.com/doc -o ./src/types/zenmo-schema.d.ts",
-    "prepare": "husky",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -73,13 +72,16 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "husky": "^9.1.7",
     "lint-staged": "^16.1.2",
     "openapi-typescript": "^7.8.0",
+    "simple-git-hooks": "^2.13.0",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.3.5",
     "typescript": "^5",
     "ultracite": "5.0.46"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "bun typecheck && npx lint-staged"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,jsonc,css,scss,md,mdx}": [
