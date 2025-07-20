@@ -3,42 +3,42 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
+const steps = [
+  {
+    number: '01',
+    title: 'Create a group',
+    description:
+      'Start by creating a group for your roommates, trip, or event.',
+    src: 'https://placehold.co/500x300',
+  },
+  {
+    number: '02',
+    title: 'Add expenses',
+    description:
+      'Log expenses as they happen. Take photos of receipts for easy reference.',
+    src: 'https://placehold.co/500x300',
+  },
+  {
+    number: '03',
+    title: 'Split automatically',
+    description:
+      'The app calculates who owes what, simplifying even the most complex splits.',
+    src: 'https://placehold.co/500x300',
+  },
+  {
+    number: '04',
+    title: 'Settle up',
+    description:
+      'Pay directly through the app or mark expenses as settled manually.',
+    src: 'https://placehold.co/500x300',
+  },
+];
+
 export function HowItWorksSection() {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
-
-  const steps = [
-    {
-      number: '01',
-      title: 'Create a group',
-      description:
-        'Start by creating a group for your roommates, trip, or event.',
-      src: 'https://placehold.co/500x300',
-    },
-    {
-      number: '02',
-      title: 'Add expenses',
-      description:
-        'Log expenses as they happen. Take photos of receipts for easy reference.',
-      src: 'https://placehold.co/500x300',
-    },
-    {
-      number: '03',
-      title: 'Split automatically',
-      description:
-        'The app calculates who owes what, simplifying even the most complex splits.',
-      src: 'https://placehold.co/500x300',
-    },
-    {
-      number: '04',
-      title: 'Settle up',
-      description:
-        'Pay directly through the app or mark expenses as settled manually.',
-      src: 'https://placehold.co/500x300',
-    },
-  ];
 
   return (
     <section
