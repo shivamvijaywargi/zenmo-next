@@ -1,4 +1,4 @@
-import { RegisterView } from '@/modules/auth/ui/register/views/register-view';
+import { RegisterView } from "@/modules/auth/ui/register/views/register-view";
 
 export default function RegisterPage() {
   return <RegisterView />;

@@ -1,6 +1,6 @@
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
-import type { TUserSuccessResponse } from '../auth-schema';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import type { TUserSuccessResponse } from "../auth-schema";
 
 interface IAuthState {
   user: TUserSuccessResponse | null;
@@ -18,7 +18,7 @@ export const useAuthStore = create<IAuthState>()(
       clearUser: () => set({ user: null, isAuthenticated: false }),
     }),
     {
-      name: 'auth-storage',
+      name: "auth-storage",
       partialize: (state) => ({
         user: state.user
           ? { ...state.user, session: undefined } // Only persist user data

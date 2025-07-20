@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 import {
   CreditCard,
   DollarSign,
@@ -8,8 +8,8 @@ import {
   Smartphone,
   Split,
   Users,
-} from 'lucide-react';
-import { useInView } from 'react-intersection-observer';
+} from "lucide-react";
+import { useInView } from "react-intersection-observer";
 
 export function FeaturesSection() {
   const { ref, inView } = useInView({
@@ -21,44 +21,44 @@ export function FeaturesSection() {
     {
       id: 1,
       icon: <Users className="h-10 w-10 text-primary" />,
-      title: 'Group Expenses',
+      title: "Group Expenses",
       description:
-        'Split bills with friends, roommates, or travel groups. Create multiple groups for different occasions.',
+        "Split bills with friends, roommates, or travel groups. Create multiple groups for different occasions.",
     },
     {
       id: 2,
       icon: <CreditCard className="h-10 w-10 text-primary" />,
-      title: 'Instant Payments',
+      title: "Instant Payments",
       description:
-        'Pay or request money instantly. Connect your bank account or cards for seamless transfers.',
+        "Pay or request money instantly. Connect your bank account or cards for seamless transfers.",
     },
     {
       id: 3,
       icon: <PieChart className="h-10 w-10 text-primary" />,
-      title: 'Expense Analytics',
+      title: "Expense Analytics",
       description:
-        'Track spending patterns and get insights on your expenses with beautiful visualizations.',
+        "Track spending patterns and get insights on your expenses with beautiful visualizations.",
     },
     {
       id: 4,
       icon: <Smartphone className="h-10 w-10 text-primary" />,
-      title: 'Mobile First',
+      title: "Mobile First",
       description:
-        'Designed for the mobile experience with offline capabilities and real-time syncing.',
+        "Designed for the mobile experience with offline capabilities and real-time syncing.",
     },
     {
       id: 5,
       icon: <DollarSign className="h-10 w-10 text-primary" />,
-      title: 'Currency Support',
+      title: "Currency Support",
       description:
-        'Support for multiple currencies with automatic conversion for international trips.',
+        "Support for multiple currencies with automatic conversion for international trips.",
     },
     {
       id: 7,
       icon: <Split className="h-10 w-10 text-primary" />,
-      title: 'Smart Split',
+      title: "Smart Split",
       description:
-        'Split bills equally or unequally. Specify exact amounts or split by percentages.',
+        "Split bills equally or unequally. Specify exact amounts or split by percentages.",
     },
   ];
 

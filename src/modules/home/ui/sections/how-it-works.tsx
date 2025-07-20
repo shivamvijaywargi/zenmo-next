@@ -1,36 +1,36 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const steps = [
   {
-    number: '01',
-    title: 'Create a group',
+    number: "01",
+    title: "Create a group",
     description:
-      'Start by creating a group for your roommates, trip, or event.',
-    src: 'https://placehold.co/500x300',
+      "Start by creating a group for your roommates, trip, or event.",
+    src: "https://placehold.co/500x300",
   },
   {
-    number: '02',
-    title: 'Add expenses',
+    number: "02",
+    title: "Add expenses",
     description:
-      'Log expenses as they happen. Take photos of receipts for easy reference.',
-    src: 'https://placehold.co/500x300',
+      "Log expenses as they happen. Take photos of receipts for easy reference.",
+    src: "https://placehold.co/500x300",
   },
   {
-    number: '03',
-    title: 'Split automatically',
+    number: "03",
+    title: "Split automatically",
     description:
-      'The app calculates who owes what, simplifying even the most complex splits.',
-    src: 'https://placehold.co/500x300',
+      "The app calculates who owes what, simplifying even the most complex splits.",
+    src: "https://placehold.co/500x300",
   },
   {
-    number: '04',
-    title: 'Settle up',
+    number: "04",
+    title: "Settle up",
     description:
-      'Pay directly through the app or mark expenses as settled manually.',
-    src: 'https://placehold.co/500x300',
+      "Pay directly through the app or mark expenses as settled manually.",
+    src: "https://placehold.co/500x300",
   },
 ];
 
@@ -78,7 +78,7 @@ export function HowItWorksSection() {
                 transition={{ delay: 0.2 * index, duration: 0.5 }}
               >
                 <div
-                  className={`mb-4 md:mb-0 ${index % 2 === 1 ? 'md:order-last' : ''}`}
+                  className={`mb-4 md:mb-0 ${index % 2 === 1 ? "md:order-last" : ""}`}
                 >
                   <div className="relative flex aspect-video items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-primary/20 to-primary/5">
                     <img
@@ -91,7 +91,7 @@ export function HowItWorksSection() {
                   </div>
                 </div>
                 <div
-                  className={`relative ${index % 2 === 1 ? 'md:pr-16 md:text-right' : 'md:pl-16'}`}
+                  className={`relative ${index % 2 === 1 ? "md:pr-16 md:text-right" : "md:pl-16"}`}
                 >
                   <div className="-translate-y-1/2 absolute top-1/2 left-0 z-10 hidden h-12 w-12 items-center justify-center rounded-full bg-primary font-bold text-lg text-primary-foreground shadow-lg md:flex">
                     {step.number}
