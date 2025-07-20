@@ -9,6 +9,6 @@ export const env = createEnv({
     NEXT_PUBLIC_BACKEND_URL: z.url().min(1),
   },
   experimental__runtimeEnv: {
-    NEXT_PUBLIC_BACKEND_URL: process.env.BACKEND_URL,
+    NEXT_PUBLIC_BACKEND_URL: process.env.NEXT_PUBLIC_BACKEND_URL,
   },
 });
