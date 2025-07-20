@@ -2,11 +2,12 @@
 
 import { motion } from 'framer-motion';
 import { CheckCircle } from 'lucide-react';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
 export function HeroSection() {
+  const router = useRouter();
   return (
     <section className="relative flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-900 via-gray-800 to-background py-16 md:py-24 lg:py-32">
       <div className="relative z-10 max-w-7xl px-4 md:px-8">
@@ -47,7 +48,7 @@ export function HeroSection() {
             >
               <Button
                 className="gap-2"
-                onClick={() => redirect('/register')}
+                onClick={() => router.push('/register')}
                 size="lg"
               >
                 Get Started
