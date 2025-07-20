@@ -9,7 +9,8 @@
     "format": "ultracite format",
     "lint": "ultracite lint",
     "openapi:types": "openapi-typescript https://finance-management-api-c8hw.onrender.com/doc -o ./src/types/zenmo-schema.d.ts",
-    "prepare": "husky"
+    "prepare": "husky",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
