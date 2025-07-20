@@ -6,10 +6,10 @@ export const metadata: Metadata = {
     'Zenmo combines the best features of expense splitting and finance management in one seamless experience.',
 };
 
-export default function RootLayout({
+export default function MainLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <body>{children}</body>;
+  return <div>{children}</div>;
 }
