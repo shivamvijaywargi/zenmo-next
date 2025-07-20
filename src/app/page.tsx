@@ -9,7 +9,7 @@ export default function Home() {
           className="dark:invert"
           height={38}
           priority
-          src="/next.svg"
+          src='/next.svg'
           width={180}
         />
         <ol className="list-inside list-decimal text-center font-mono text-sm/6 sm:text-left">
