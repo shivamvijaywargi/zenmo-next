@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { CheckCircle } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { motion } from "framer-motion";
+import { CheckCircle } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 export function HeroSection() {
   const router = useRouter();
@@ -27,7 +27,7 @@ export function HeroSection() {
               initial={{ opacity: 0 }}
               transition={{ delay: 0.2, duration: 0.7 }}
             >
-              The smarter way to{' '}
+              The smarter way to{" "}
               <span className="text-primary">split expenses</span> and manage
               expenses
             </motion.h1>
@@ -48,7 +48,7 @@ export function HeroSection() {
             >
               <Button
                 className="gap-2"
-                onClick={() => router.push('/register')}
+                onClick={() => router.push("/register")}
                 size="lg"
               >
                 Get Started
@@ -69,7 +69,7 @@ export function HeroSection() {
                 transition={{
                   repeat: Number.POSITIVE_INFINITY,
                   duration: 4,
-                  ease: 'easeInOut',
+                  ease: "easeInOut",
                 }}
               >
                 <img
@@ -88,7 +88,7 @@ export function HeroSection() {
                 transition={{
                   repeat: Number.POSITIVE_INFINITY,
                   duration: 5,
-                  ease: 'easeInOut',
+                  ease: "easeInOut",
                 }}
               />
             </div>

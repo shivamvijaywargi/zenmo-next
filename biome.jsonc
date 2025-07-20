@@ -8,6 +8,11 @@
       }
     }
   },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double"
+    }
+  },
   "files": {
     "includes": ["**/*", "!src/components/ui/**"]
   }

@@ -15,48 +15,42 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { $api } from "@/lib/api-client";
-import {
-  type IErrorResponse,
-  registerSchema,
-  type TRegister,
-} from "@/modules/auth/auth-schema";
-import { useAuthStore } from "@/modules/auth/stores/auth-store";
+import { loginSchema, type TLogin } from "../../auth-schema";
+import { useAuthStore } from "../../stores/auth-store";
 
-export function RegisterForm() {
+export function LoginForm() {
   const router = useRouter();
   const { setUser } = useAuthStore();
 
-  const form = useForm<TRegister>({
-    resolver: zodResolver(registerSchema),
+  const form = useForm<TLogin>({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
-      fullName: "",
       email: "",
       password: "",
     },
   });
 
-  const registerMutation = $api.useMutation("post", "/api/v1/auth/register", {
+  const loginMutation = $api.useMutation("post", "/api/v1/auth/login", {
     onSuccess: (data) => {
       toast.success(data.message);
 
       setUser(data.data);
 
-      // Redirect to Home
+      // Redirect to Home?
       router.push("/");
     },
-    onError: (error: IErrorResponse) => {
+    onError: (error) => {
       const errorMessage =
         error.message === "Failed to fetch"
           ? "Unable to connect to the server. Please try again."
           : error.message;
-
       toast.error(errorMessage);
     },
     retry: 1,
   });
 
-  function onSubmit(values: TRegister) {
-    registerMutation.mutate({
+  function onSubmit(values: TLogin) {
+    loginMutation.mutate({
       body: values,
     });
   }
@@ -64,20 +58,6 @@ export function RegisterForm() {
   return (
     <Form {...form}>
       <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
-        <FormField
-          control={form.control}
-          name="fullName"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Full Name</FormLabel>
-              <FormControl>
-                <Input placeholder="John Doe" type="text" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
         <FormField
           control={form.control}
           name="email"
@@ -105,8 +85,8 @@ export function RegisterForm() {
             </FormItem>
           )}
         />
-        <Button loading={registerMutation.isPending} type="submit">
-          Register
+        <Button loading={loginMutation.isPending} type="submit">
+          Login
         </Button>
       </form>
     </Form>
