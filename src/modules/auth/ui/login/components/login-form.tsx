@@ -15,8 +15,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { $api } from "@/lib/api-client";
-import { loginSchema, type TLogin } from "../../auth-schema";
-import { useAuthStore } from "../../stores/auth-store";
+import { loginSchema, type TLogin } from "@/modules/auth/auth-schema";
+import { useAuthStore } from "@/modules/auth/stores/auth-store";
 
 export function LoginForm() {
   const router = useRouter();
