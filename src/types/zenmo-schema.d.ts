@@ -4,2125 +4,2125 @@
  */
 
 export interface paths {
-  '/api/health-check': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/health-check": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Health Check API */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    get: {
-      parameters: {
-        query?: never;
-        header?: never;
-        path?: never;
-        cookie?: never;
-      };
-      requestBody?: never;
-      responses: {
-        /** @description Health Check API */
-        200: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              success: boolean;
-              message: string;
-            };
-          };
+    "/api/v1/auth/register": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
         };
-      };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            /** @description User registration details */
+            requestBody: {
+                content: {
+                    "application/json": {
+                        /** @description User's email address (unique) */
+                        email: string;
+                        /** @description User's full name */
+                        fullName?: string | null;
+                        password: string;
+                    };
+                };
+            };
+            responses: {
+                /** @description User created successfully */
+                201: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default true */
+                            success: boolean;
+                            message: string;
+                            data: {
+                                /** @description Unique identifier for the user */
+                                id?: string;
+                                /** @description User's email address (unique) */
+                                email: string;
+                                /** @description Whether the user's email has been verified */
+                                emailVerified?: boolean | null;
+                                /** @description User's full name */
+                                fullName?: string | null;
+                                /**
+                                 * @description User's role in the system (e.g., USER, ADMIN)
+                                 * @enum {string|null}
+                                 */
+                                role?: "user" | "admin" | null;
+                                /** @description Timestamp when the user was created */
+                                createdAt?: string;
+                                /** @description Timestamp when the user was last updated */
+                                updatedAt?: string;
+                                session: string;
+                            };
+                        };
+                    };
+                };
+                /** @description The validation error(s) */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description Field already exist(s) */
+                409: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description The validation error(s) */
+                422: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @example false */
+                            success: boolean;
+                            /** @example {
+                             *       "issues": [
+                             *         {
+                             *           "code": "invalid_type",
+                             *           "expected": "string",
+                             *           "received": "undefined",
+                             *           "path": [
+                             *             "email"
+                             *           ],
+                             *           "message": "Required"
+                             *         },
+                             *         {
+                             *           "code": "invalid_type",
+                             *           "expected": "string",
+                             *           "received": "undefined",
+                             *           "path": [
+                             *             "password"
+                             *           ],
+                             *           "message": "Required"
+                             *         }
+                             *       ],
+                             *       "name": "ZodError"
+                             *     } */
+                            error: {
+                                issues: {
+                                    code: string;
+                                    path: (string | number)[];
+                                    message?: string;
+                                }[];
+                                name: string;
+                            };
+                        };
+                    };
+                };
+                /** @description Server side error(s) */
+                500: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/auth/register': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/auth/login": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            /** @description User registration details */
+            requestBody: {
+                content: {
+                    "application/json": {
+                        /** @description User's email address (unique) */
+                        email: string;
+                        password: string;
+                    };
+                };
+            };
+            responses: {
+                /** @description User logged in successfully */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default true */
+                            success: boolean;
+                            message: string;
+                            data: {
+                                /** @description Unique identifier for the user */
+                                id?: string;
+                                /** @description User's email address (unique) */
+                                email: string;
+                                /** @description Whether the user's email has been verified */
+                                emailVerified?: boolean | null;
+                                /** @description User's full name */
+                                fullName?: string | null;
+                                /**
+                                 * @description User's role in the system (e.g., USER, ADMIN)
+                                 * @enum {string|null}
+                                 */
+                                role?: "user" | "admin" | null;
+                                /** @description Timestamp when the user was created */
+                                createdAt?: string;
+                                /** @description Timestamp when the user was last updated */
+                                updatedAt?: string;
+                                session: string;
+                            };
+                        };
+                    };
+                };
+                /** @description The validation error(s) */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description Server side error(s) */
+                500: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    get?: never;
-    put?: never;
-    post: {
-      parameters: {
-        query?: never;
-        header?: never;
-        path?: never;
-        cookie?: never;
-      };
-      /** @description User registration details */
-      requestBody: {
-        content: {
-          'application/json': {
-            /** @description User's email address (unique) */
-            email: string;
-            /** @description User's full name */
-            fullName?: string | null;
-            password: string;
-          };
+    "/api/v1/auth/logout": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
         };
-      };
-      responses: {
-        /** @description User created successfully */
-        201: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default true */
-              success: boolean;
-              message: string;
-              data: {
-                /** @description Unique identifier for the user */
-                id?: string;
-                /** @description User's email address (unique) */
-                email: string;
-                /** @description Whether the user's email has been verified */
-                emailVerified?: boolean | null;
-                /** @description User's full name */
-                fullName?: string | null;
-                /**
-                 * @description User's role in the system (e.g., USER, ADMIN)
-                 * @enum {string|null}
-                 */
-                role?: 'user' | 'admin' | null;
-                /** @description Timestamp when the user was created */
-                createdAt?: string;
-                /** @description Timestamp when the user was last updated */
-                updatedAt?: string;
-                session: string;
-              };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
             };
-          };
-        };
-        /** @description The validation error(s) */
-        400: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
+            requestBody?: never;
+            responses: {
+                /** @description User logged out successfully */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default true */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description You are not authorized, please login */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
             };
-          };
         };
-        /** @description Field already exist(s) */
-        409: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description The validation error(s) */
-        422: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @example false */
-              success: boolean;
-              /** @example {
-               *       "issues": [
-               *         {
-               *           "code": "invalid_type",
-               *           "expected": "string",
-               *           "received": "undefined",
-               *           "path": [
-               *             "email"
-               *           ],
-               *           "message": "Required"
-               *         },
-               *         {
-               *           "code": "invalid_type",
-               *           "expected": "string",
-               *           "received": "undefined",
-               *           "path": [
-               *             "password"
-               *           ],
-               *           "message": "Required"
-               *         }
-               *       ],
-               *       "name": "ZodError"
-               *     } */
-              error: {
-                issues: {
-                  code: string;
-                  path: (string | number)[];
-                  message?: string;
-                }[];
-                name: string;
-              };
-            };
-          };
-        };
-        /** @description Server side error(s) */
-        500: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-      };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/auth/login': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/auth/me": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Logged in user details */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default true */
+                            success: boolean;
+                            message: string;
+                            data: {
+                                /** @description Unique identifier for the user */
+                                id: string;
+                                /** @description User's email address (unique) */
+                                email: string;
+                                /** @description Whether the user's email has been verified */
+                                emailVerified: boolean | null;
+                                /** @description User's full name */
+                                fullName: string | null;
+                                /**
+                                 * @description User's role in the system (e.g., USER, ADMIN)
+                                 * @enum {string|null}
+                                 */
+                                role: "user" | "admin" | null;
+                                /** @description Timestamp when the user was created */
+                                createdAt: string;
+                                /** @description Timestamp when the user was last updated */
+                                updatedAt: string;
+                            };
+                        };
+                    };
+                };
+                /** @description You are not authorized, please login */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    get?: never;
-    put?: never;
-    post: {
-      parameters: {
-        query?: never;
-        header?: never;
-        path?: never;
-        cookie?: never;
-      };
-      /** @description User registration details */
-      requestBody: {
-        content: {
-          'application/json': {
-            /** @description User's email address (unique) */
-            email: string;
-            password: string;
-          };
+    "/api/v1/categories": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
         };
-      };
-      responses: {
-        /** @description User logged in successfully */
-        200: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default true */
-              success: boolean;
-              message: string;
-              data: {
-                /** @description Unique identifier for the user */
-                id?: string;
-                /** @description User's email address (unique) */
-                email: string;
-                /** @description Whether the user's email has been verified */
-                emailVerified?: boolean | null;
-                /** @description User's full name */
-                fullName?: string | null;
-                /**
-                 * @description User's role in the system (e.g., USER, ADMIN)
-                 * @enum {string|null}
-                 */
-                role?: 'user' | 'admin' | null;
-                /** @description Timestamp when the user was created */
-                createdAt?: string;
-                /** @description Timestamp when the user was last updated */
-                updatedAt?: string;
-                session: string;
-              };
+        get: {
+            parameters: {
+                query?: {
+                    /** @description Current page number */
+                    page?: number;
+                    /** @description Number of items per page */
+                    limit?: number;
+                    /** @description Search query */
+                    search?: string;
+                    /** @description Sort by field */
+                    sortBy?: "name" | "createdAt" | "updatedAt";
+                    /** @description Sort order */
+                    sortOrder?: "asc" | "desc";
+                    /** @description Current offset */
+                    offset?: number | null;
+                    /** @description Filter by active status */
+                    isActive?: boolean | ("true" | "false") | ("0" | "1");
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
             };
-          };
-        };
-        /** @description The validation error(s) */
-        400: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
+            requestBody?: never;
+            responses: {
+                /** @description Categories retrieved successfully */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default true */
+                            success: boolean;
+                            message: string;
+                            data: {
+                                /** @description Unique identifier for the category */
+                                id: string;
+                                /** @description Name of the category */
+                                name: string;
+                                /** @description Detailed description of the category */
+                                description: string | null;
+                                /** @description ID of the user who owns this category (If any) */
+                                userId: string | null;
+                                /** @description Whether the category is active or archived */
+                                isActive: boolean;
+                                /** @description Icon identifier for the category */
+                                icon: string | null;
+                                /** @description Timestamp when the category was created */
+                                createdAt: string;
+                                /** @description Timestamp when the category was last updated */
+                                updatedAt: string;
+                            }[];
+                            metadata: {
+                                /** @description Total number of records */
+                                totalCount?: number | null;
+                                /**
+                                 * @description Current page number
+                                 * @default 1
+                                 */
+                                page: number;
+                                /**
+                                 * @description Number of items per page
+                                 * @default 10
+                                 */
+                                limit: number;
+                                /** @description Search query */
+                                search?: string;
+                                /**
+                                 * @description Field to sort by
+                                 * @default createdAt
+                                 */
+                                sortBy: string;
+                                /**
+                                 * @description Sort order
+                                 * @default asc
+                                 * @enum {string}
+                                 */
+                                sortOrder: "asc" | "desc";
+                                /** @description Total number of pages */
+                                totalPages?: number | null;
+                                /** @description Whether there is a next page */
+                                hasNextPage?: boolean;
+                                /** @description Whether there is a previous page */
+                                hasPrevPage?: boolean;
+                                /** @description Current offset */
+                                offset?: number | null;
+                                /** @description Number of items in current page */
+                                currentCount?: number | null;
+                            };
+                        };
+                    };
+                };
             };
-          };
         };
-        /** @description Server side error(s) */
-        500: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
             };
-          };
+            /** @description Category creation details */
+            requestBody: {
+                content: {
+                    "application/json": {
+                        /** @description Name of the category */
+                        name: string;
+                        /** @description Detailed description of the category */
+                        description?: string | null;
+                        /** @description Whether the category is active or archived */
+                        isActive?: boolean;
+                        /** @description Icon identifier for the category */
+                        icon?: string | null;
+                    };
+                };
+            };
+            responses: {
+                /** @description Category created successfully */
+                201: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default true */
+                            success: boolean;
+                            message: string;
+                            data: {
+                                /** @description Unique identifier for the category */
+                                id: string;
+                                /** @description Name of the category */
+                                name: string;
+                                /** @description Detailed description of the category */
+                                description: string | null;
+                                /** @description ID of the user who owns this category (If any) */
+                                userId: string | null;
+                                /** @description Whether the category is active or archived */
+                                isActive: boolean;
+                                /** @description Icon identifier for the category */
+                                icon: string | null;
+                                /** @description Timestamp when the category was created */
+                                createdAt: string;
+                                /** @description Timestamp when the category was last updated */
+                                updatedAt: string;
+                            };
+                        };
+                    };
+                };
+                /** @description The validation error(s) */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description You are not authorized, please login */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description Category already exists */
+                409: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description The validation error(s) */
+                422: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @example false */
+                            success: boolean;
+                            /** @example {
+                             *       "issues": [
+                             *         {
+                             *           "code": "invalid_type",
+                             *           "expected": "string",
+                             *           "received": "undefined",
+                             *           "path": [
+                             *             "name"
+                             *           ],
+                             *           "message": "Required"
+                             *         }
+                             *       ],
+                             *       "name": "ZodError"
+                             *     } */
+                            error: {
+                                issues: {
+                                    code: string;
+                                    path: (string | number)[];
+                                    message?: string;
+                                }[];
+                                name: string;
+                            };
+                        };
+                    };
+                };
+                /** @description Failed to create category */
+                500: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+            };
         };
-      };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/auth/logout': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/categories/:category": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    category: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Category retrieved successfully */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default true */
+                            success: boolean;
+                            message: string;
+                            data: {
+                                /** @description Unique identifier for the category */
+                                id: string;
+                                /** @description Name of the category */
+                                name: string;
+                                /** @description Detailed description of the category */
+                                description: string | null;
+                                /** @description ID of the user who owns this category (If any) */
+                                userId: string | null;
+                                /** @description Whether the category is active or archived */
+                                isActive: boolean;
+                                /** @description Icon identifier for the category */
+                                icon: string | null;
+                                /** @description Timestamp when the category was created */
+                                createdAt: string;
+                                /** @description Timestamp when the category was last updated */
+                                updatedAt: string;
+                            };
+                        };
+                    };
+                };
+                /** @description Category not found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    get?: never;
-    put?: never;
-    post: {
-      parameters: {
-        query?: never;
-        header?: never;
-        path?: never;
-        cookie?: never;
-      };
-      requestBody?: never;
-      responses: {
-        /** @description User logged out successfully */
-        200: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default true */
-              success: boolean;
-              message: string;
-            };
-          };
+    "/api/v1/categories/:categoryId": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
         };
-        /** @description You are not authorized, please login */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
+        get?: never;
+        put?: never;
+        post?: never;
+        delete: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    categoryId: string;
+                };
+                cookie?: never;
             };
-          };
+            requestBody?: never;
+            responses: {
+                /** @description Category deleted successfully */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default true */
+                            success: boolean;
+                            message: string;
+                            data: {
+                                /** @description Unique identifier for the category */
+                                id: string;
+                                /** @description Name of the category */
+                                name: string;
+                                /** @description Detailed description of the category */
+                                description: string | null;
+                                /** @description ID of the user who owns this category (If any) */
+                                userId: string | null;
+                                /** @description Whether the category is active or archived */
+                                isActive: boolean;
+                                /** @description Icon identifier for the category */
+                                icon: string | null;
+                                /** @description Timestamp when the category was created */
+                                createdAt: string;
+                                /** @description Timestamp when the category was last updated */
+                                updatedAt: string;
+                            };
+                        };
+                    };
+                };
+                /** @description You are not authorized, please login */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description You are not allowed to perform this action */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description Category not found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description Failed to delete category */
+                500: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+            };
         };
-      };
+        options?: never;
+        head?: never;
+        patch: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    categoryId: string;
+                };
+                cookie?: never;
+            };
+            /** @description Category update details */
+            requestBody: {
+                content: {
+                    "application/json": {
+                        /** @description Name of the category */
+                        name?: string;
+                        /** @description Detailed description of the category */
+                        description?: string | null;
+                        /** @description Whether the category is active or archived */
+                        isActive?: boolean;
+                        /** @description Icon identifier for the category */
+                        icon?: string | null;
+                    };
+                };
+            };
+            responses: {
+                /** @description Category updated successfully */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default true */
+                            success: boolean;
+                            message: string;
+                            data: {
+                                /** @description Unique identifier for the category */
+                                id: string;
+                                /** @description Name of the category */
+                                name: string;
+                                /** @description Detailed description of the category */
+                                description: string | null;
+                                /** @description ID of the user who owns this category (If any) */
+                                userId: string | null;
+                                /** @description Whether the category is active or archived */
+                                isActive: boolean;
+                                /** @description Icon identifier for the category */
+                                icon: string | null;
+                                /** @description Timestamp when the category was created */
+                                createdAt: string;
+                                /** @description Timestamp when the category was last updated */
+                                updatedAt: string;
+                            };
+                        };
+                    };
+                };
+                /** @description The validation error(s) */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description You are not authorized, please login */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description You are not allowed to perform this action */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description Category not found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description Failed to update category */
+                500: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+        trace?: never;
     };
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/auth/me': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/groups": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get all groups */
+        get: {
+            parameters: {
+                query?: {
+                    /** @description Current page number */
+                    page?: number;
+                    /** @description Number of items per page */
+                    limit?: number;
+                    /** @description Search query */
+                    search?: string;
+                    /** @description Field to sort by */
+                    sortBy?: string;
+                    /** @description Sort order */
+                    sortOrder?: "asc" | "desc";
+                    /** @description Current offset */
+                    offset?: number | null;
+                    /** @description Filter by status */
+                    status?: "settled" | "unsettled";
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description List of Groups received successfully */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default true */
+                            success: boolean;
+                            message: string;
+                            data: {
+                                /** @description Unique identifier for the group */
+                                id: string;
+                                /** @description Name of the group */
+                                name: string;
+                                /** @description Reference to the user who created the group */
+                                creatorId: string;
+                                /**
+                                 * @description Current status of the group (settled or unsettled)
+                                 * @enum {string|null}
+                                 */
+                                status: "settled" | "unsettled" | null;
+                                /** @description Timestamp when the group was created */
+                                createdAt: string;
+                                /** @description Timestamp when the group was last updated */
+                                updatedAt: string;
+                            }[];
+                        };
+                    };
+                };
+                /** @description You are not authorized, please login. */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        /** Create a new group */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            /** @description Group creation */
+            requestBody: {
+                content: {
+                    "application/json": {
+                        /** @description Name of the group */
+                        name: string;
+                    };
+                };
+            };
+            responses: {
+                /** @description Group created successfully */
+                201: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default true */
+                            success: boolean;
+                            message: string;
+                            data: {
+                                /** @description Unique identifier for the group */
+                                id: string;
+                                /** @description Name of the group */
+                                name: string;
+                                /** @description Reference to the user who created the group */
+                                creatorId: string;
+                                /**
+                                 * @description Current status of the group (settled or unsettled)
+                                 * @enum {string|null}
+                                 */
+                                status: "settled" | "unsettled" | null;
+                                /** @description Timestamp when the group was created */
+                                createdAt: string;
+                                /** @description Timestamp when the group was last updated */
+                                updatedAt: string;
+                            };
+                        };
+                    };
+                };
+                /** @description The validation error(s) */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description You are not authorized, please login. */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description The validation error(s) */
+                422: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @example false */
+                            success: boolean;
+                            /** @example {
+                             *       "issues": [
+                             *         {
+                             *           "code": "invalid_type",
+                             *           "expected": "string",
+                             *           "received": "undefined",
+                             *           "path": [
+                             *             "name"
+                             *           ],
+                             *           "message": "Required"
+                             *         },
+                             *         {
+                             *           "code": "invalid_type",
+                             *           "expected": "string",
+                             *           "received": "undefined",
+                             *           "path": [
+                             *             "creatorId"
+                             *           ],
+                             *           "message": "Required"
+                             *         }
+                             *       ],
+                             *       "name": "ZodError"
+                             *     } */
+                            error: {
+                                issues: {
+                                    code: string;
+                                    path: (string | number)[];
+                                    message?: string;
+                                }[];
+                                name: string;
+                            };
+                        };
+                    };
+                };
+                /** @description Something went wrong, please try again later */
+                500: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    get: {
-      parameters: {
-        query?: never;
-        header?: never;
-        path?: never;
-        cookie?: never;
-      };
-      requestBody?: never;
-      responses: {
-        /** @description Logged in user details */
-        200: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default true */
-              success: boolean;
-              message: string;
-              data: {
-                /** @description Unique identifier for the user */
-                id: string;
-                /** @description User's email address (unique) */
-                email: string;
-                /** @description Whether the user's email has been verified */
-                emailVerified: boolean | null;
-                /** @description User's full name */
-                fullName: string | null;
-                /**
-                 * @description User's role in the system (e.g., USER, ADMIN)
-                 * @enum {string|null}
-                 */
-                role: 'user' | 'admin' | null;
-                /** @description Timestamp when the user was created */
-                createdAt: string;
-                /** @description Timestamp when the user was last updated */
-                updatedAt: string;
-              };
-            };
-          };
+    "/api/v1/group/:id": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
         };
-        /** @description You are not authorized, please login */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
+        /** Get group by ID */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description Unique identifier of the record */
+                    id: string;
+                };
+                cookie?: never;
             };
-          };
+            requestBody?: never;
+            responses: {
+                /** @description Retrieved group data by ID successfully */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default true */
+                            success: boolean;
+                            message: string;
+                            data: {
+                                /** @description Unique identifier for the group */
+                                id: string;
+                                /** @description Name of the group */
+                                name: string;
+                                /** @description Reference to the user who created the group */
+                                creatorId: string;
+                                /**
+                                 * @description Current status of the group (settled or unsettled)
+                                 * @enum {string|null}
+                                 */
+                                status: "settled" | "unsettled" | null;
+                                /** @description Timestamp when the group was created */
+                                createdAt: string;
+                                /** @description Timestamp when the group was last updated */
+                                updatedAt: string;
+                            };
+                        };
+                    };
+                };
+                /** @description You are not authorized, please login. */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description You are not allowed to perform this action. */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description Group with id does not exist */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description Something went wrong, please try again later */
+                500: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+            };
         };
-      };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/categories': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/group/:groupId": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Update group by ID */
+        put: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description Unique identifier of the record */
+                    groupId: string;
+                };
+                cookie?: never;
+            };
+            /** @description Group update */
+            requestBody: {
+                content: {
+                    "application/json": {
+                        /** @description Name of the group */
+                        name: string;
+                        /** @description Timestamp when the group was last updated */
+                        updatedAt?: string;
+                    };
+                };
+            };
+            responses: {
+                /** @description Group updated successfully */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default true */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description You are not authorized, please login. */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description You are not allowed to perform this action. */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description Group with id does not exist */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description Something went wrong, please try again later */
+                500: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    get: {
-      parameters: {
-        query?: {
-          /** @description Current page number */
-          page?: number;
-          /** @description Number of items per page */
-          limit?: number;
-          /** @description Search query */
-          search?: string;
-          /** @description Sort by field */
-          sortBy?: 'name' | 'createdAt' | 'updatedAt';
-          /** @description Sort order */
-          sortOrder?: 'asc' | 'desc';
-          /** @description Current offset */
-          offset?: number | null;
-          /** @description Filter by active status */
-          isActive?: boolean | ('true' | 'false') | ('0' | '1');
+    "/api/v1/groups/:id": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
         };
-        header?: never;
-        path?: never;
-        cookie?: never;
-      };
-      requestBody?: never;
-      responses: {
-        /** @description Categories retrieved successfully */
-        200: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default true */
-              success: boolean;
-              message: string;
-              data: {
-                /** @description Unique identifier for the category */
-                id: string;
-                /** @description Name of the category */
-                name: string;
-                /** @description Detailed description of the category */
-                description: string | null;
-                /** @description ID of the user who owns this category (If any) */
-                userId: string | null;
-                /** @description Whether the category is active or archived */
-                isActive: boolean;
-                /** @description Icon identifier for the category */
-                icon: string | null;
-                /** @description Timestamp when the category was created */
-                createdAt: string;
-                /** @description Timestamp when the category was last updated */
-                updatedAt: string;
-              }[];
-              metadata: {
-                /** @description Total number of records */
-                totalCount?: number | null;
-                /**
-                 * @description Current page number
-                 * @default 1
-                 */
-                page: number;
-                /**
-                 * @description Number of items per page
-                 * @default 10
-                 */
-                limit: number;
-                /** @description Search query */
-                search?: string;
-                /**
-                 * @description Field to sort by
-                 * @default createdAt
-                 */
-                sortBy: string;
-                /**
-                 * @description Sort order
-                 * @default asc
-                 * @enum {string}
-                 */
-                sortOrder: 'asc' | 'desc';
-                /** @description Total number of pages */
-                totalPages?: number | null;
-                /** @description Whether there is a next page */
-                hasNextPage?: boolean;
-                /** @description Whether there is a previous page */
-                hasPrevPage?: boolean;
-                /** @description Current offset */
-                offset?: number | null;
-                /** @description Number of items in current page */
-                currentCount?: number | null;
-              };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** Delete group by ID */
+        delete: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description Unique identifier of the record */
+                    id: string;
+                };
+                cookie?: never;
             };
-          };
+            requestBody?: never;
+            responses: {
+                /** @description Group deleted successfully */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default true */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description You are not authorized, please login. */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description You are not allowed to perform this action. */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description Group with id does not exist */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description Something went wrong, please try again later */
+                500: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+            };
         };
-      };
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    put?: never;
-    post: {
-      parameters: {
-        query?: never;
-        header?: never;
-        path?: never;
-        cookie?: never;
-      };
-      /** @description Category creation details */
-      requestBody: {
-        content: {
-          'application/json': {
-            /** @description Name of the category */
-            name: string;
-            /** @description Detailed description of the category */
-            description?: string | null;
-            /** @description Whether the category is active or archived */
-            isActive?: boolean;
-            /** @description Icon identifier for the category */
-            icon?: string | null;
-          };
+    "/api/v1/groups/:groupId/users": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
         };
-      };
-      responses: {
-        /** @description Category created successfully */
-        201: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default true */
-              success: boolean;
-              message: string;
-              data: {
-                /** @description Unique identifier for the category */
-                id: string;
-                /** @description Name of the category */
-                name: string;
-                /** @description Detailed description of the category */
-                description: string | null;
-                /** @description ID of the user who owns this category (If any) */
-                userId: string | null;
-                /** @description Whether the category is active or archived */
-                isActive: boolean;
-                /** @description Icon identifier for the category */
-                icon: string | null;
-                /** @description Timestamp when the category was created */
-                createdAt: string;
-                /** @description Timestamp when the category was last updated */
-                updatedAt: string;
-              };
+        get?: never;
+        put?: never;
+        /** Add users to group */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    groupId: string;
+                };
+                cookie?: never;
             };
-          };
-        };
-        /** @description The validation error(s) */
-        400: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
+            /** @description Group creation */
+            requestBody: {
+                content: {
+                    "application/json": {
+                        userId: string;
+                        username: string;
+                    }[];
+                };
             };
-          };
-        };
-        /** @description You are not authorized, please login */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
+            responses: {
+                /** @description Group created successfully */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default true */
+                            success: boolean;
+                            message: string;
+                            data: {
+                                /** @description Unique identifier for the group */
+                                id: string;
+                                /** @description Name of the group */
+                                name: string;
+                                /** @description Reference to the user who created the group */
+                                creatorId: string;
+                                /**
+                                 * @description Current status of the group (settled or unsettled)
+                                 * @enum {string|null}
+                                 */
+                                status: "settled" | "unsettled" | null;
+                                /** @description Timestamp when the group was created */
+                                createdAt: string;
+                                /** @description Timestamp when the group was last updated */
+                                updatedAt: string;
+                            };
+                        };
+                    };
+                };
+                /** @description The validation error(s) */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description You are not authorized, please login. */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description Group with id does not exist */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description User(s) already exists in group */
+                409: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description The validation error(s) */
+                422: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @example false */
+                            success: boolean;
+                            /** @example {
+                             *       "issues": [
+                             *         {
+                             *           "code": "invalid_type",
+                             *           "expected": "string",
+                             *           "received": "undefined",
+                             *           "path": [
+                             *             "name"
+                             *           ],
+                             *           "message": "Required"
+                             *         },
+                             *         {
+                             *           "code": "invalid_type",
+                             *           "expected": "string",
+                             *           "received": "undefined",
+                             *           "path": [
+                             *             "creatorId"
+                             *           ],
+                             *           "message": "Required"
+                             *         }
+                             *       ],
+                             *       "name": "ZodError"
+                             *     } */
+                            error: {
+                                issues: {
+                                    code: string;
+                                    path: (string | number)[];
+                                    message?: string;
+                                }[];
+                                name: string;
+                            };
+                        };
+                    };
+                };
+                /** @description Something went wrong, please try again later */
+                500: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
             };
-          };
         };
-        /** @description Category already exists */
-        409: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description The validation error(s) */
-        422: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @example false */
-              success: boolean;
-              /** @example {
-               *       "issues": [
-               *         {
-               *           "code": "invalid_type",
-               *           "expected": "string",
-               *           "received": "undefined",
-               *           "path": [
-               *             "name"
-               *           ],
-               *           "message": "Required"
-               *         }
-               *       ],
-               *       "name": "ZodError"
-               *     } */
-              error: {
-                issues: {
-                  code: string;
-                  path: (string | number)[];
-                  message?: string;
-                }[];
-                name: string;
-              };
-            };
-          };
-        };
-        /** @description Failed to create category */
-        500: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-      };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/categories/:category': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/activities": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: {
+                    /** @description Current page number */
+                    page?: number;
+                    /** @description Number of items per page */
+                    limit?: number;
+                    /** @description Sort by field */
+                    sortBy?: "createdAt" | "resourceType" | "action";
+                    /** @description Sort order */
+                    sortOrder?: "asc" | "desc";
+                    /** @description Current offset */
+                    offset?: number | null;
+                    /** @description Filter by user ID */
+                    userId?: string;
+                    /** @description Filter by resource type */
+                    resourceType?: "category" | "expense" | "user" | "group";
+                    /** @description Filter by action type */
+                    action?: "create" | "update" | "delete";
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Categories retrieved successfully */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default true */
+                            success: boolean;
+                            message: string;
+                            data: {
+                                id: string;
+                                message: string;
+                            }[];
+                            metadata: {
+                                /** @description Total number of records */
+                                totalCount?: number | null;
+                                /**
+                                 * @description Current page number
+                                 * @default 1
+                                 */
+                                page: number;
+                                /**
+                                 * @description Number of items per page
+                                 * @default 10
+                                 */
+                                limit: number;
+                                /** @description Search query */
+                                search?: string;
+                                /**
+                                 * @description Field to sort by
+                                 * @default createdAt
+                                 */
+                                sortBy: string;
+                                /**
+                                 * @description Sort order
+                                 * @default asc
+                                 * @enum {string}
+                                 */
+                                sortOrder: "asc" | "desc";
+                                /** @description Total number of pages */
+                                totalPages?: number | null;
+                                /** @description Whether there is a next page */
+                                hasNextPage?: boolean;
+                                /** @description Whether there is a previous page */
+                                hasPrevPage?: boolean;
+                                /** @description Current offset */
+                                offset?: number | null;
+                                /** @description Number of items in current page */
+                                currentCount?: number | null;
+                            };
+                        };
+                    };
+                };
+                /** @description You are not authorized, please login */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description The validation error(s) */
+                422: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @example false */
+                            success: boolean;
+                            error: {
+                                issues: {
+                                    code: string;
+                                    path: (string | number)[];
+                                    message?: string;
+                                }[];
+                                name: string;
+                            };
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    get: {
-      parameters: {
-        query?: never;
-        header?: never;
-        path: {
-          category: string;
+    "/api/v1/expenses": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
         };
-        cookie?: never;
-      };
-      requestBody?: never;
-      responses: {
-        /** @description Category retrieved successfully */
-        200: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default true */
-              success: boolean;
-              message: string;
-              data: {
-                /** @description Unique identifier for the category */
-                id: string;
-                /** @description Name of the category */
-                name: string;
-                /** @description Detailed description of the category */
-                description: string | null;
-                /** @description ID of the user who owns this category (If any) */
-                userId: string | null;
-                /** @description Whether the category is active or archived */
-                isActive: boolean;
-                /** @description Icon identifier for the category */
-                icon: string | null;
-                /** @description Timestamp when the category was created */
-                createdAt: string;
-                /** @description Timestamp when the category was last updated */
-                updatedAt: string;
-              };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
             };
-          };
-        };
-        /** @description Category not found */
-        404: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
+            /** @description Expense creation details */
+            requestBody: {
+                content: {
+                    "application/json": {
+                        /** @description Reference to the user who paid for the expense. (Note: For admin users, this field is required.) */
+                        payerId?: string;
+                        /** @description Reference to the category of the expense */
+                        categoryId?: string | null;
+                        /** @description Reference to the group the expense belongs to (optional) */
+                        groupId?: string | null;
+                        /** @description Amount of the expense */
+                        amount: number;
+                        /** @description Three-letter currency code (e.g., USD, INR) */
+                        currency: string;
+                        /**
+                         * @description Type of split applied to the expense (equal, percentage, etc)
+                         * @enum {string|null}
+                         */
+                        splitType?: "even" | "uneven" | "proportional" | null;
+                        /** @description Additional details about the expense */
+                        description?: string | null;
+                        splits?: {
+                            userId: string;
+                            amount: number;
+                        }[];
+                    };
+                };
             };
-          };
+            responses: {
+                /** @description Expense created successfully */
+                201: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default true */
+                            success: boolean;
+                            message: string;
+                            data: {
+                                /** @description Unique identifier for the expense */
+                                id: string;
+                                /** @description Reference to the user who paid for the expense */
+                                payerId: string;
+                                /** @description Reference to the user who created the expense */
+                                creatorId: string;
+                                /** @description Reference to the category of the expense */
+                                categoryId: string | null;
+                                /** @description Reference to the group the expense belongs to (optional) */
+                                groupId: string | null;
+                                /** @description Amount of the expense */
+                                amount: number;
+                                /** @description Three-letter currency code (e.g., USD, INR) */
+                                currency: string;
+                                /**
+                                 * @description Type of split applied to the expense (equal, percentage, etc)
+                                 * @enum {string|null}
+                                 */
+                                splitType: "even" | "uneven" | "proportional" | null;
+                                /** @description Additional details about the expense */
+                                description: string | null;
+                                /** @description Timestamp when the expense was created */
+                                createdAt: string;
+                                /** @description Timestamp when the expense was last updated */
+                                updatedAt: string;
+                            };
+                        };
+                    };
+                };
+                /** @description The validation error(s) */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description You are not authorized, please login. */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description Requested resource not found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description The validation error(s) */
+                422: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @example false */
+                            success: boolean;
+                            /** @example {
+                             *       "issues": [
+                             *         {
+                             *           "code": "invalid_type",
+                             *           "expected": "string",
+                             *           "received": "undefined",
+                             *           "path": [
+                             *             "payerId"
+                             *           ],
+                             *           "message": "Required"
+                             *         },
+                             *         {
+                             *           "code": "invalid_type",
+                             *           "expected": "string",
+                             *           "received": "undefined",
+                             *           "path": [
+                             *             "creatorId"
+                             *           ],
+                             *           "message": "Required"
+                             *         },
+                             *         {
+                             *           "code": "invalid_type",
+                             *           "expected": "number",
+                             *           "received": "undefined",
+                             *           "path": [
+                             *             "amount"
+                             *           ],
+                             *           "message": "Required"
+                             *         },
+                             *         {
+                             *           "code": "invalid_type",
+                             *           "expected": "string",
+                             *           "received": "undefined",
+                             *           "path": [
+                             *             "currency"
+                             *           ],
+                             *           "message": "Required"
+                             *         }
+                             *       ],
+                             *       "name": "ZodError"
+                             *     } */
+                            error: {
+                                issues: {
+                                    code: string;
+                                    path: (string | number)[];
+                                    message?: string;
+                                }[];
+                                name: string;
+                            };
+                        };
+                    };
+                };
+                /** @description Something went wrong, please try again later */
+                500: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+            };
         };
-      };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/categories/:categoryId': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/settlements/:settlementId": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /** Update settlements by ID */
+        patch: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description Unique identifier of the record */
+                    settlementId: string;
+                };
+                cookie?: never;
+            };
+            /** @description Settlement update */
+            requestBody: {
+                content: {
+                    "application/json": {
+                        /** @description Reference to the user who is payer */
+                        senderId: string;
+                        /** @description Reference to the user who is ower  */
+                        receiverId: string;
+                        /** @description Reference to the group the settlement belongs to */
+                        groupId?: string | null;
+                        /** @description Amount of the settlement */
+                        amount: number;
+                    };
+                };
+            };
+            responses: {
+                /** @description Settlement updated successfully */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default true */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description You are not authorized, please login. */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description You are not allowed to perform this action. */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description Settlement with id does not exist */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+                /** @description Something went wrong, please try again later */
+                500: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @default false */
+                            success: boolean;
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+        trace?: never;
     };
-    get?: never;
-    put?: never;
-    post?: never;
-    delete: {
-      parameters: {
-        query?: never;
-        header?: never;
-        path: {
-          categoryId: string;
-        };
-        cookie?: never;
-      };
-      requestBody?: never;
-      responses: {
-        /** @description Category deleted successfully */
-        200: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default true */
-              success: boolean;
-              message: string;
-              data: {
-                /** @description Unique identifier for the category */
-                id: string;
-                /** @description Name of the category */
-                name: string;
-                /** @description Detailed description of the category */
-                description: string | null;
-                /** @description ID of the user who owns this category (If any) */
-                userId: string | null;
-                /** @description Whether the category is active or archived */
-                isActive: boolean;
-                /** @description Icon identifier for the category */
-                icon: string | null;
-                /** @description Timestamp when the category was created */
-                createdAt: string;
-                /** @description Timestamp when the category was last updated */
-                updatedAt: string;
-              };
-            };
-          };
-        };
-        /** @description You are not authorized, please login */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description You are not allowed to perform this action */
-        403: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description Category not found */
-        404: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description Failed to delete category */
-        500: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-      };
-    };
-    options?: never;
-    head?: never;
-    patch: {
-      parameters: {
-        query?: never;
-        header?: never;
-        path: {
-          categoryId: string;
-        };
-        cookie?: never;
-      };
-      /** @description Category update details */
-      requestBody: {
-        content: {
-          'application/json': {
-            /** @description Name of the category */
-            name?: string;
-            /** @description Detailed description of the category */
-            description?: string | null;
-            /** @description Whether the category is active or archived */
-            isActive?: boolean;
-            /** @description Icon identifier for the category */
-            icon?: string | null;
-          };
-        };
-      };
-      responses: {
-        /** @description Category updated successfully */
-        200: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default true */
-              success: boolean;
-              message: string;
-              data: {
-                /** @description Unique identifier for the category */
-                id: string;
-                /** @description Name of the category */
-                name: string;
-                /** @description Detailed description of the category */
-                description: string | null;
-                /** @description ID of the user who owns this category (If any) */
-                userId: string | null;
-                /** @description Whether the category is active or archived */
-                isActive: boolean;
-                /** @description Icon identifier for the category */
-                icon: string | null;
-                /** @description Timestamp when the category was created */
-                createdAt: string;
-                /** @description Timestamp when the category was last updated */
-                updatedAt: string;
-              };
-            };
-          };
-        };
-        /** @description The validation error(s) */
-        400: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description You are not authorized, please login */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description You are not allowed to perform this action */
-        403: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description Category not found */
-        404: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description Failed to update category */
-        500: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-      };
-    };
-    trace?: never;
-  };
-  '/api/v1/groups': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /** Get all groups */
-    get: {
-      parameters: {
-        query?: {
-          /** @description Current page number */
-          page?: number;
-          /** @description Number of items per page */
-          limit?: number;
-          /** @description Search query */
-          search?: string;
-          /** @description Field to sort by */
-          sortBy?: string;
-          /** @description Sort order */
-          sortOrder?: 'asc' | 'desc';
-          /** @description Current offset */
-          offset?: number | null;
-          /** @description Filter by status */
-          status?: 'settled' | 'unsettled';
-        };
-        header?: never;
-        path?: never;
-        cookie?: never;
-      };
-      requestBody?: never;
-      responses: {
-        /** @description List of Groups received successfully */
-        200: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default true */
-              success: boolean;
-              message: string;
-              data: {
-                /** @description Unique identifier for the group */
-                id: string;
-                /** @description Name of the group */
-                name: string;
-                /** @description Reference to the user who created the group */
-                creatorId: string;
-                /**
-                 * @description Current status of the group (settled or unsettled)
-                 * @enum {string|null}
-                 */
-                status: 'settled' | 'unsettled' | null;
-                /** @description Timestamp when the group was created */
-                createdAt: string;
-                /** @description Timestamp when the group was last updated */
-                updatedAt: string;
-              }[];
-            };
-          };
-        };
-        /** @description You are not authorized, please login. */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-      };
-    };
-    put?: never;
-    /** Create a new group */
-    post: {
-      parameters: {
-        query?: never;
-        header?: never;
-        path?: never;
-        cookie?: never;
-      };
-      /** @description Group creation */
-      requestBody: {
-        content: {
-          'application/json': {
-            /** @description Name of the group */
-            name: string;
-          };
-        };
-      };
-      responses: {
-        /** @description Group created successfully */
-        201: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default true */
-              success: boolean;
-              message: string;
-              data: {
-                /** @description Unique identifier for the group */
-                id: string;
-                /** @description Name of the group */
-                name: string;
-                /** @description Reference to the user who created the group */
-                creatorId: string;
-                /**
-                 * @description Current status of the group (settled or unsettled)
-                 * @enum {string|null}
-                 */
-                status: 'settled' | 'unsettled' | null;
-                /** @description Timestamp when the group was created */
-                createdAt: string;
-                /** @description Timestamp when the group was last updated */
-                updatedAt: string;
-              };
-            };
-          };
-        };
-        /** @description The validation error(s) */
-        400: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description You are not authorized, please login. */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description The validation error(s) */
-        422: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @example false */
-              success: boolean;
-              /** @example {
-               *       "issues": [
-               *         {
-               *           "code": "invalid_type",
-               *           "expected": "string",
-               *           "received": "undefined",
-               *           "path": [
-               *             "name"
-               *           ],
-               *           "message": "Required"
-               *         },
-               *         {
-               *           "code": "invalid_type",
-               *           "expected": "string",
-               *           "received": "undefined",
-               *           "path": [
-               *             "creatorId"
-               *           ],
-               *           "message": "Required"
-               *         }
-               *       ],
-               *       "name": "ZodError"
-               *     } */
-              error: {
-                issues: {
-                  code: string;
-                  path: (string | number)[];
-                  message?: string;
-                }[];
-                name: string;
-              };
-            };
-          };
-        };
-        /** @description Something went wrong, please try again later */
-        500: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-      };
-    };
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/group/:id': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /** Get group by ID */
-    get: {
-      parameters: {
-        query?: never;
-        header?: never;
-        path: {
-          /** @description Unique identifier of the record */
-          id: string;
-        };
-        cookie?: never;
-      };
-      requestBody?: never;
-      responses: {
-        /** @description Retrieved group data by ID successfully */
-        200: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default true */
-              success: boolean;
-              message: string;
-              data: {
-                /** @description Unique identifier for the group */
-                id: string;
-                /** @description Name of the group */
-                name: string;
-                /** @description Reference to the user who created the group */
-                creatorId: string;
-                /**
-                 * @description Current status of the group (settled or unsettled)
-                 * @enum {string|null}
-                 */
-                status: 'settled' | 'unsettled' | null;
-                /** @description Timestamp when the group was created */
-                createdAt: string;
-                /** @description Timestamp when the group was last updated */
-                updatedAt: string;
-              };
-            };
-          };
-        };
-        /** @description You are not authorized, please login. */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description You are not allowed to perform this action. */
-        403: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description Group with id does not exist */
-        404: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description Something went wrong, please try again later */
-        500: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-      };
-    };
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/group/:groupId': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    get?: never;
-    /** Update group by ID */
-    put: {
-      parameters: {
-        query?: never;
-        header?: never;
-        path: {
-          /** @description Unique identifier of the record */
-          groupId: string;
-        };
-        cookie?: never;
-      };
-      /** @description Group update */
-      requestBody: {
-        content: {
-          'application/json': {
-            /** @description Name of the group */
-            name: string;
-            /** @description Timestamp when the group was last updated */
-            updatedAt?: string;
-          };
-        };
-      };
-      responses: {
-        /** @description Group updated successfully */
-        200: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default true */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description You are not authorized, please login. */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description You are not allowed to perform this action. */
-        403: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description Group with id does not exist */
-        404: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description Something went wrong, please try again later */
-        500: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-      };
-    };
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/groups/:id': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    get?: never;
-    put?: never;
-    post?: never;
-    /** Delete group by ID */
-    delete: {
-      parameters: {
-        query?: never;
-        header?: never;
-        path: {
-          /** @description Unique identifier of the record */
-          id: string;
-        };
-        cookie?: never;
-      };
-      requestBody?: never;
-      responses: {
-        /** @description Group deleted successfully */
-        200: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default true */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description You are not authorized, please login. */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description You are not allowed to perform this action. */
-        403: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description Group with id does not exist */
-        404: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description Something went wrong, please try again later */
-        500: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-      };
-    };
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/groups/:groupId/users': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    get?: never;
-    put?: never;
-    /** Add users to group */
-    post: {
-      parameters: {
-        query?: never;
-        header?: never;
-        path: {
-          groupId: string;
-        };
-        cookie?: never;
-      };
-      /** @description Group creation */
-      requestBody: {
-        content: {
-          'application/json': {
-            userId: string;
-            username: string;
-          }[];
-        };
-      };
-      responses: {
-        /** @description Group created successfully */
-        200: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default true */
-              success: boolean;
-              message: string;
-              data: {
-                /** @description Unique identifier for the group */
-                id: string;
-                /** @description Name of the group */
-                name: string;
-                /** @description Reference to the user who created the group */
-                creatorId: string;
-                /**
-                 * @description Current status of the group (settled or unsettled)
-                 * @enum {string|null}
-                 */
-                status: 'settled' | 'unsettled' | null;
-                /** @description Timestamp when the group was created */
-                createdAt: string;
-                /** @description Timestamp when the group was last updated */
-                updatedAt: string;
-              };
-            };
-          };
-        };
-        /** @description The validation error(s) */
-        400: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description You are not authorized, please login. */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description Group with id does not exist */
-        404: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description User(s) already exists in group */
-        409: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description The validation error(s) */
-        422: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @example false */
-              success: boolean;
-              /** @example {
-               *       "issues": [
-               *         {
-               *           "code": "invalid_type",
-               *           "expected": "string",
-               *           "received": "undefined",
-               *           "path": [
-               *             "name"
-               *           ],
-               *           "message": "Required"
-               *         },
-               *         {
-               *           "code": "invalid_type",
-               *           "expected": "string",
-               *           "received": "undefined",
-               *           "path": [
-               *             "creatorId"
-               *           ],
-               *           "message": "Required"
-               *         }
-               *       ],
-               *       "name": "ZodError"
-               *     } */
-              error: {
-                issues: {
-                  code: string;
-                  path: (string | number)[];
-                  message?: string;
-                }[];
-                name: string;
-              };
-            };
-          };
-        };
-        /** @description Something went wrong, please try again later */
-        500: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-      };
-    };
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/activities': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    get: {
-      parameters: {
-        query?: {
-          /** @description Current page number */
-          page?: number;
-          /** @description Number of items per page */
-          limit?: number;
-          /** @description Sort by field */
-          sortBy?: 'createdAt' | 'resourceType' | 'action';
-          /** @description Sort order */
-          sortOrder?: 'asc' | 'desc';
-          /** @description Current offset */
-          offset?: number | null;
-          /** @description Filter by user ID */
-          userId?: string;
-          /** @description Filter by resource type */
-          resourceType?: 'category' | 'expense' | 'user' | 'group';
-          /** @description Filter by action type */
-          action?: 'create' | 'update' | 'delete';
-        };
-        header?: never;
-        path?: never;
-        cookie?: never;
-      };
-      requestBody?: never;
-      responses: {
-        /** @description Categories retrieved successfully */
-        200: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default true */
-              success: boolean;
-              message: string;
-              data: {
-                id: string;
-                message: string;
-              }[];
-              metadata: {
-                /** @description Total number of records */
-                totalCount?: number | null;
-                /**
-                 * @description Current page number
-                 * @default 1
-                 */
-                page: number;
-                /**
-                 * @description Number of items per page
-                 * @default 10
-                 */
-                limit: number;
-                /** @description Search query */
-                search?: string;
-                /**
-                 * @description Field to sort by
-                 * @default createdAt
-                 */
-                sortBy: string;
-                /**
-                 * @description Sort order
-                 * @default asc
-                 * @enum {string}
-                 */
-                sortOrder: 'asc' | 'desc';
-                /** @description Total number of pages */
-                totalPages?: number | null;
-                /** @description Whether there is a next page */
-                hasNextPage?: boolean;
-                /** @description Whether there is a previous page */
-                hasPrevPage?: boolean;
-                /** @description Current offset */
-                offset?: number | null;
-                /** @description Number of items in current page */
-                currentCount?: number | null;
-              };
-            };
-          };
-        };
-        /** @description You are not authorized, please login */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description The validation error(s) */
-        422: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @example false */
-              success: boolean;
-              error: {
-                issues: {
-                  code: string;
-                  path: (string | number)[];
-                  message?: string;
-                }[];
-                name: string;
-              };
-            };
-          };
-        };
-      };
-    };
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/expenses': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    get?: never;
-    put?: never;
-    post: {
-      parameters: {
-        query?: never;
-        header?: never;
-        path?: never;
-        cookie?: never;
-      };
-      /** @description Expense creation details */
-      requestBody: {
-        content: {
-          'application/json': {
-            /** @description Reference to the user who paid for the expense. (Note: For admin users, this field is required.) */
-            payerId?: string;
-            /** @description Reference to the category of the expense */
-            categoryId?: string | null;
-            /** @description Reference to the group the expense belongs to (optional) */
-            groupId?: string | null;
-            /** @description Amount of the expense */
-            amount: number;
-            /** @description Three-letter currency code (e.g., USD, INR) */
-            currency: string;
-            /**
-             * @description Type of split applied to the expense (equal, percentage, etc)
-             * @enum {string|null}
-             */
-            splitType?: 'even' | 'uneven' | 'proportional' | null;
-            /** @description Additional details about the expense */
-            description?: string | null;
-            splits?: {
-              userId: string;
-              amount: number;
-            }[];
-          };
-        };
-      };
-      responses: {
-        /** @description Expense created successfully */
-        201: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default true */
-              success: boolean;
-              message: string;
-              data: {
-                /** @description Unique identifier for the expense */
-                id: string;
-                /** @description Reference to the user who paid for the expense */
-                payerId: string;
-                /** @description Reference to the user who created the expense */
-                creatorId: string;
-                /** @description Reference to the category of the expense */
-                categoryId: string | null;
-                /** @description Reference to the group the expense belongs to (optional) */
-                groupId: string | null;
-                /** @description Amount of the expense */
-                amount: number;
-                /** @description Three-letter currency code (e.g., USD, INR) */
-                currency: string;
-                /**
-                 * @description Type of split applied to the expense (equal, percentage, etc)
-                 * @enum {string|null}
-                 */
-                splitType: 'even' | 'uneven' | 'proportional' | null;
-                /** @description Additional details about the expense */
-                description: string | null;
-                /** @description Timestamp when the expense was created */
-                createdAt: string;
-                /** @description Timestamp when the expense was last updated */
-                updatedAt: string;
-              };
-            };
-          };
-        };
-        /** @description The validation error(s) */
-        400: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description You are not authorized, please login. */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description Requested resource not found */
-        404: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description The validation error(s) */
-        422: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @example false */
-              success: boolean;
-              /** @example {
-               *       "issues": [
-               *         {
-               *           "code": "invalid_type",
-               *           "expected": "string",
-               *           "received": "undefined",
-               *           "path": [
-               *             "payerId"
-               *           ],
-               *           "message": "Required"
-               *         },
-               *         {
-               *           "code": "invalid_type",
-               *           "expected": "string",
-               *           "received": "undefined",
-               *           "path": [
-               *             "creatorId"
-               *           ],
-               *           "message": "Required"
-               *         },
-               *         {
-               *           "code": "invalid_type",
-               *           "expected": "number",
-               *           "received": "undefined",
-               *           "path": [
-               *             "amount"
-               *           ],
-               *           "message": "Required"
-               *         },
-               *         {
-               *           "code": "invalid_type",
-               *           "expected": "string",
-               *           "received": "undefined",
-               *           "path": [
-               *             "currency"
-               *           ],
-               *           "message": "Required"
-               *         }
-               *       ],
-               *       "name": "ZodError"
-               *     } */
-              error: {
-                issues: {
-                  code: string;
-                  path: (string | number)[];
-                  message?: string;
-                }[];
-                name: string;
-              };
-            };
-          };
-        };
-        /** @description Something went wrong, please try again later */
-        500: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-      };
-    };
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/settlements/:settlementId': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    get?: never;
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    /** Update settlements by ID */
-    patch: {
-      parameters: {
-        query?: never;
-        header?: never;
-        path: {
-          /** @description Unique identifier of the record */
-          settlementId: string;
-        };
-        cookie?: never;
-      };
-      /** @description Settlement update */
-      requestBody: {
-        content: {
-          'application/json': {
-            /** @description Reference to the user who is payer */
-            senderId: string;
-            /** @description Reference to the user who is ower  */
-            receiverId: string;
-            /** @description Reference to the group the settlement belongs to */
-            groupId?: string | null;
-            /** @description Amount of the settlement */
-            amount: number;
-          };
-        };
-      };
-      responses: {
-        /** @description Settlement updated successfully */
-        200: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default true */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description You are not authorized, please login. */
-        401: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description You are not allowed to perform this action. */
-        403: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description Settlement with id does not exist */
-        404: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-        /** @description Something went wrong, please try again later */
-        500: {
-          headers: {
-            [name: string]: unknown;
-          };
-          content: {
-            'application/json': {
-              /** @default false */
-              success: boolean;
-              message: string;
-            };
-          };
-        };
-      };
-    };
-    trace?: never;
-  };
 }
 export type webhooks = Record<string, never>;
 export interface components {
-  schemas: never;
-  responses: never;
-  parameters: never;
-  requestBodies: never;
-  headers: never;
-  pathItems: never;
+    schemas: never;
+    responses: never;
+    parameters: never;
+    requestBodies: never;
+    headers: never;
+    pathItems: never;
 }
 export type $defs = Record<string, never>;
 export type operations = Record<string, never>;
