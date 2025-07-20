@@ -1,5 +1,5 @@
 import { LoginView } from "@/modules/auth/ui/register/views/login-view";
 
-export default function RegisterPage() {
+export default function LoginPage() {
   return <LoginView />;
 }
