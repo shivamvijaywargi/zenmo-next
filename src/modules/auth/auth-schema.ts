@@ -24,6 +24,7 @@ export type TLogin = z.infer<typeof loginSchema>;
 export const registerSchema = commonFormSchema.extend({
   fullName: z
     .string()
+    .trim()
     .min(3, 'Full name must be at least 3 characters long')
     .max(60, 'Full name cannot be more than 60 characters long'),
 });

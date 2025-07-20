@@ -1,12 +1,5 @@
 import { GalleryVerticalEnd } from 'lucide-react';
-import type { Metadata } from 'next';
 import Link from 'next/link';
-
-export const metadata: Metadata = {
-  title: 'Zenmo - Register',
-  description:
-    'Register for Zenmo, your go-to platform for managing and sharing your personal finances with ease.',
-};
 
 export default function AuthLayout({
   children,
