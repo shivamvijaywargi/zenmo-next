@@ -9,6 +9,6 @@
     }
   },
   "files": {
-    "includes": ["!/components/ui/**"]
+    "includes": ["**/*", "!src/components/ui/**"]
   }
 }
