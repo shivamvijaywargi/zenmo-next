@@ -84,7 +84,7 @@
     "pre-commit": "bun typecheck && npx lint-staged"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,jsonc,css,scss,md,mdx}": [
+    "*.{ts,tsx,json,jsonc,css,scss,md,mdx}": [
       "npx ultracite format"
     ]
   }
