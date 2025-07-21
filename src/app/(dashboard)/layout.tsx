@@ -16,7 +16,7 @@ export default function DashboardLayout({
     <SidebarProvider>
       <DashboardSidebar />
       <main className="w-full">
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 p-3">
           <SidebarTrigger />
           <DashboardBreadcrumb fullPathname={pathname} />
         </div>
